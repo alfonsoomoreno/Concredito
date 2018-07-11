@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Alfonso Moreno
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data noupdate="1">
+
+    <!-- TODO
+    <record model="prestamos" id="prestamos_demo_1">
+       <field name="name">...</field>
+    </record>
+    -->
+
+</data>
+</openerp>

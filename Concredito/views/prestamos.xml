@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Alfonso Moreno
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+    <record model="ir.ui.view" id="prestamos_form_view">
+        <field name="name">prestamos.form (in concredito)</field>
+        <field name="model">prestamos</field>
+        <field name="inherit_id" ref="TODO othermodule.form_view"/>
+        <field name="arch" type="xml">
+            <!-- TODO -->
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="prestamos_search_view">
+        <field name="name">prestamos.search (in concredito)</field>
+        <field name="model">prestamos</field>
+        <field name="inherit_id" ref="TODO othermodule.search_view"/>
+        <field name="arch" type="xml">
+            <!-- TODO -->
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="prestamos_tree_view">
+        <field name="name">prestamos.tree (in concredito)</field>
+        <field name="model">prestamos</field>
+        <field name="inherit_id" ref="TODO othermodule.tree_view"/>
+        <field name="arch" type="xml">
+            <!-- TODO -->
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="prestamos_act_window">
+        <field name="name">Prestamos</field> <!-- TODO -->
+        <field name="res_model">prestamos</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record model="ir.ui.menu" id="prestamos_menu">
+        <field name="name">Prestamos</field>
+        <field name="parent_id" ref="xmlid of parent menu"/> <!-- TODO -->
+        <field name="action" ref="prestamos_act_window"/>
+        <field name="sequence" eval="16"/> <!-- TODO -->
+    </record>
+
+</data>
+</openerp>
