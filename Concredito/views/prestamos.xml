@@ -35,6 +35,7 @@
                             <field name="nombre" attrs="{'readonly' : [('state' , 'in' , ('activa','cancelado') )]}" />
                             <field name="solicitudes" attrs="{'readonly' : [('state' , 'in' , ('activa','cancelado') )]}"/>
                             <field name="date" attrs="{'readonly' : [('state' , 'in' , ('activa','cancelado') )]}"/>
+                            <field name="date_due" attrs="{'readonly' : [('state' , 'in' , ('activa','cancelado') )]}"/>
                         </group>
                         <group >
                             <field name="prestamo" attrs="{'readonly' : [('state' , 'in' , ('activa','cancelado') )]}"/>

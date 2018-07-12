@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Alfonso Moreno
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<openerp>
+<data>
+    <record id="perfil_view_form" model="ir.ui.view">
+            <field name="name">Perfil del cliente</field>
+            <field name="model">perfil</field>
+            <field name="view_type">form</field>
+            <field name="arch" type="xml">
+                <form string ="Perfil del cliente">
+                    <header>
+                        <button name="SolicitudesPendientes"
+                            string="Solicitudes Pendientes"
+                            type="object" class="oe_highlight" />
+                    </header>
+                    <group>
+                       <field name="partner_id" />
+                    </group>
+                    <notebook>
+                        <page string = "Solicitudes pendiente">
+                            <field name="solicitudes_pendientes">
+                                <tree>
+                                    <field name = "name_sol"/>
+                                    <field name = "solicitud"/>
+                                    <field name = "prestamo"/>
+                                    <field name = "estado"/>
+                                    <field name = "vigencia"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record id="perfil_tree_view" model="ir.ui.view">
+            <field name="name">Solicitudes Pendientes</field>
+            <field name="model">perfil</field>
+            <field name="view_type">tree</field>
+            <field name="arch" type="xml">
+                <tree string ="Historial">
+                    <field name="partner_id" />
+                </tree>
+            </field>
+        </record>
+        <record id="action_perfil" model="ir.actions.act_window">
+            <field name="name">Solicitudes Pendientes</field>
+            <field name="res_model">perfil</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_perfil"
+            name="Perfiles" parent="menu_prestamos" action="action_perfil" sequence="12"/>
+
+
+
+</data>
+</openerp>

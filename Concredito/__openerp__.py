@@ -14,7 +14,8 @@
     'data': [
         'wizard/nueva_solicitud.xml',
         'views/prestamos.xml',
-        'views/historial.xml'
+        'views/historial.xml',
+        'views/perfil.xml',
     ],
     'installable': True,
     'auto_install': False,

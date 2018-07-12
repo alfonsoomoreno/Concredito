@@ -2,3 +2,4 @@
 
 from . import prestamos
 from . import historial
+from . import perfil
