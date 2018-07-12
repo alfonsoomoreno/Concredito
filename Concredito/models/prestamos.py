@@ -145,15 +145,15 @@ class Prestamos(models.Model):
         #Se actualiza el estado a activa
         self.state = 'activa'
 
-    class ListaPagos(models.Model):
-        #Objeto que se da de alta para el manejo de la lista de pagos
-        _name="lista.pagos"
-        #Columnas que contendra el objeto lista.pagos
-        pagos = fields.Many2one(
-                comodel_name='solicitudes', string='Cost distribution',
-                ondelete='cascade', required=True,
-            )
-        pago = fields.Integer('Mensualidad')
-        interes = fields.Float('Monto de Interes')
-        total_pagar = fields.Float('Total a pagar Mensualmente')
+class ListaPagos(models.Model):
+    #Objeto que se da de alta para el manejo de la lista de pagos
+    _name="lista.pagos"
+    #Columnas que contendra el objeto lista.pagos
+    pagos = fields.Many2one(
+            comodel_name='solicitudes', string='Cost distribution',
+            ondelete='cascade', required=True,
+        )
+    pago = fields.Integer('Mensualidad')
+    interes = fields.Float('Monto de Interes')
+    total_pagar = fields.Float('Total a pagar Mensualmente')
 

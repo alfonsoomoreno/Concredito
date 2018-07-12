@@ -55,16 +55,16 @@ class HistorialCrediticio(models.Model):
             raise UserError(
                     _("Este cliente no tiene solicitudes creadas, Favor de crear una nueva solicitud"))
 
-    class historialsolicitudes(models.Model):
-        #Objeto que se da de alta para el manejo del historial solicitudes
-        _name = 'historial.solicitudes'
+class historialsolicitudes(models.Model):
+    #Objeto que se da de alta para el manejo del historial solicitudes
+    _name = 'historial.solicitudes'
 
-        #Columnas que contendran el objeto historial.solicitudes
-        solicitudes = fields.Many2one(
-                comodel_name='historial.crediticio', string='Historial de credito',
-                ondelete='cascade', required=True,
-            )
-        name_sol = fields.Many2one('solicitudes','Solicitud')
-        solicitud = fields.Char('Concepto del prestamo')
-        prestamo = fields.Integer('Monto del prestamo')
-        estado = fields.Char('Estado')
+    #Columnas que contendran el objeto historial.solicitudes
+    solicitudes = fields.Many2one(
+            comodel_name='historial.crediticio', string='Historial de credito',
+            ondelete='cascade', required=True,
+        )
+    name_sol = fields.Many2one('solicitudes','Solicitud')
+    solicitud = fields.Char('Concepto del prestamo')
+    prestamo = fields.Integer('Monto del prestamo')
+    estado = fields.Char('Estado')
