@@ -1,51 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright 2018 Alfonso Moreno
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
-
 <openerp>
 <data>
+    <record id="solicitud_view_form" model="ir.ui.view">
+            <field name="name">Solicitudes de prestamo</field>
+            <field name="model">solicitudes</field>
+            <field name="view_type">form</field>
+            <field name="arch" type="xml">
+                <form string ="Solicitudes">
+                    <header>
+                        <button name="generar_pagos"
+                            string="Generar Pagos" states="borrador"
+                            type="object" class="oe_highlight" />
+                        <button name="action_draft"
+                            string="Cambiar a borrador" states="cancelado"
+                            type="object" class="oe_highlight" />
+                        <button name="action_cancel"
+                            string="Cancelar" states="activa"
+                            type="object" class="oe_highlight" />
+                       <field name="state" widget="statusbar"
+                            statusbar_visible="borrador,activa,cancelado"
+                            statusbar_colors='{"draft": "blue", "cancel": "red"}' />
+                    </header>
+                    <div class="oe_title">
+                        <h1>
+                            <label string="Solicitud de cliente " class="oe_inline" />
+                            <field name="name" class="oe_inline"
+                                readonly="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="nombre" attrs="{'readonly' : [('state' , 'in' , ('activa','cancelado') )]}" />
+                            <field name="solicitudes" attrs="{'readonly' : [('state' , 'in' , ('activa','cancelado') )]}"/>
+                            <field name="date" attrs="{'readonly' : [('state' , 'in' , ('activa','cancelado') )]}"/>
+                        </group>
+                        <group >
+                            <field name="prestamo" attrs="{'readonly' : [('state' , 'in' , ('activa','cancelado') )]}"/>
+                            <field name="plazo" attrs="{'readonly' : [('state' , 'in' , ('activa','cancelado') )]}"/>
+                            <field name="interes" />
+                            <field name="monto_total_pagar" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string = "Pagos">
+                            <field name="lista_pagos">
+                                <tree string="Listado de pagos">
+                                    <field name = "pago"/>
+                                    <field name = "interes"/>
+                                    <field name = "total_pagar"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record id="solicitud_tree_view" model="ir.ui.view">
+            <field name="name">Solicitudes clientes</field>
+            <field name="model">solicitudes</field>
+            <field name="view_type">tree</field>
+            <field name="arch" type="xml">
+                <tree string ="Solicitudes" colors="blue:state=='draft';">
+                    <field name="name" />
+                    <field name="nombre" />
+                    <field name = "solicitudes"/>
+                    <field name = "state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_solicitudes" model="ir.actions.act_window">
+            <field name="name">Solicitudes de prestamo</field>
+            <field name="res_model">solicitudes</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="solicitud_tree_view"/>
+        </record>
 
-    <record model="ir.ui.view" id="prestamos_form_view">
-        <field name="name">prestamos.form (in concredito)</field>
-        <field name="model">prestamos</field>
-        <field name="inherit_id" ref="TODO othermodule.form_view"/>
-        <field name="arch" type="xml">
-            <!-- TODO -->
-        </field>
-    </record>
+        <menuitem id="menu_prestamos" name="Prestamos"
+            parent="account.menu_finance_receivables" sequence = "9"/>
+        <menuitem id="menu_solicitudes"
+            name="Solicitudes" parent="menu_prestamos" action="action_solicitudes" sequence="10"/>
 
-    <record model="ir.ui.view" id="prestamos_search_view">
-        <field name="name">prestamos.search (in concredito)</field>
-        <field name="model">prestamos</field>
-        <field name="inherit_id" ref="TODO othermodule.search_view"/>
-        <field name="arch" type="xml">
-            <!-- TODO -->
-        </field>
-    </record>
 
-    <record model="ir.ui.view" id="prestamos_tree_view">
-        <field name="name">prestamos.tree (in concredito)</field>
-        <field name="model">prestamos</field>
-        <field name="inherit_id" ref="TODO othermodule.tree_view"/>
-        <field name="arch" type="xml">
-            <!-- TODO -->
-        </field>
-    </record>
-
-    <record model="ir.actions.act_window" id="prestamos_act_window">
-        <field name="name">Prestamos</field> <!-- TODO -->
-        <field name="res_model">prestamos</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[]</field>
-        <field name="context">{}</field>
-    </record>
-
-    <record model="ir.ui.menu" id="prestamos_menu">
-        <field name="name">Prestamos</field>
-        <field name="parent_id" ref="xmlid of parent menu"/> <!-- TODO -->
-        <field name="action" ref="prestamos_act_window"/>
-        <field name="sequence" eval="16"/> <!-- TODO -->
-    </record>
 
 </data>
 </openerp>

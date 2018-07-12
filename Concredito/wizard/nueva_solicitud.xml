@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="nueva_solicitud_wizard_view">
+            <field name="name">nueva.solicitud.wizard.form</field>
+            <field name="model">nueva.solicitud</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Crear una solicitud de credito">
+                    <footer>
+                        <button string="Crear" name="NuevaSolicitud"
+                            type="object" class="oe_highlight" />
+                        or
+                        <button string="Cancel" class="oe_link"
+                            special="cancel" />
+                    </footer>
+                    <group>
+                        <group>
+                            <field name="solicitud"/>
+                        </group>
+                        <group>
+                            <field name="prestamo"/>
+                            <field name="plazo"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="action_nueva_solicitud" model="ir.actions.act_window">
+            <field name="name">Nueva solicitud</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nueva.solicitud</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</openerp>

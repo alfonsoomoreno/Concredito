@@ -12,10 +12,10 @@
     'depends': [
     ],
     'data': [
-        'security/prestamos.xml',
+        'wizard/nueva_solicitud.xml',
         'views/prestamos.xml',
+        'views/historial.xml'
     ],
-    'demo': [
-        'demo/prestamos.xml',
-    ],
+    'installable': True,
+    'auto_install': False,
 }
