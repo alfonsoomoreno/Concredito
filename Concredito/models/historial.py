@@ -2,7 +2,7 @@
 # Copyright 2018 Alfonso Moreno
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import api, fields, models
+from openerp import api, fields, models,_
 from openerp.exceptions import Warning as UserError
 
 class HistorialCrediticio(models.Model):

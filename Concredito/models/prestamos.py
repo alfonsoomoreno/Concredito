@@ -150,7 +150,7 @@ class ListaPagos(models.Model):
     _name="lista.pagos"
     #Columnas que contendra el objeto lista.pagos
     pagos = fields.Many2one(
-            comodel_name='solicitudes', string='Cost distribution',
+            comodel_name='solicitudes', string='Solicitud',
             ondelete='cascade', required=True,
         )
     pago = fields.Integer('Mensualidad')
